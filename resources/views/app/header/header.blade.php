@@ -18,8 +18,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                         <div class="message-body">
-                            <a href="./authentication-login.html"
-                                class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit"
+                                class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
+                            </form>
                         </div>
                     </div>
                 </li>
