@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WEB\Quots\QuotsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('qotd/dash', [QuotsController::class, 'dashQuots'])->name('dashQuots');
+Route::get('qotd/web', [QuotsController::class, 'Quots'])->name('qotd');
+Route::get('find-quots', [QuotsController::class, 'showSearch'])->name('showSearch');
+Route::get('find-quots/{category}', [QuotsController::class, 'findQuots'])->name('findQuots');

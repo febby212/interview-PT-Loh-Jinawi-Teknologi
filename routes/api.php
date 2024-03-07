@@ -4,6 +4,8 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\Quots\QuotsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('qotd/byCategory', [QuotsController::class, 'showByCategory']);
 });
+
+Route::get('/{any}', function () {
+    return response()->json(['message' => 'Not Found'], Response::HTTP_NOT_FOUND);
+})->where('any', '.*');
